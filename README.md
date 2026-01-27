@@ -2,7 +2,7 @@
 Modbus reading and control of a Marstek Venus plugin battery using an M5Stack RS485 base (+ Atom S3 Lite)
 
 > [!NOTE]
-> This repository is based on the work of Fonske. :+1: 
+> Credits to Fonske for the original project this repository is based on. 
 > [Fonske repository](https://github.com/fonske/MarstekVenus-M5stackRS485#)
 
 
@@ -22,6 +22,17 @@ By adding this bridge, the 5V from the Marstek Modbus connector is fed directly 
 
 >[!WARNING]
 >By default, the M5Stack RS485 base cannot be used without this modification.
+
+#### Utp
+
+```
+A : Oranje-wit
++ : Blauw (en/of Blauw-wit)
+- : Bruin (en/of Bruin-Wit)
+B : Oranje
+```
+
+![image](https://github.com/Blerk666/MarstekVenus-V3-M5stackRS485/blob/main/images/utp.png)
 
 #### Ontwikkkeling:
 * 22-06-2025 - Eerste versie van de documentatie.
