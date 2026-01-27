@@ -105,4 +105,4 @@ web_server:
 #     password: !secret web_server_password
 
 package:
-  marstek: 
+  marstek: github://blerk666/esphome/marstek-venus-e-gen3.yaml@main
