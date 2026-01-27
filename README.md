@@ -26,10 +26,10 @@ By adding this bridge, the 5V from the Marstek Modbus connector is fed directly 
 #### Utp
 
 ```
-A : Oranje-wit
-+ : Blauw (en/of Blauw-wit)
-- : Bruin (en/of Bruin-Wit)
-B : Oranje
+A : Orange-white  
++ : Blue (and/or Blue-white)  
+- : Brown (and/or Brown-white)  
+B : Orange
 ```
 
 ![image](https://github.com/Blerk666/MarstekVenus-V3-M5stackRS485/blob/main/images/utp.png)
