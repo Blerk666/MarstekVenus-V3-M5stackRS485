@@ -1240,41 +1240,31 @@ number:
     web_server:
       sorting_group_id: Control
       sorting_weight: 9
+  
+  - &modbus_power
+      name: "Forcible Charge Power"
+      id: forcible_charge_power
+      icon: mdi:tune-variant
+      mode: box
+      platform: modbus_controller
+      modbus_controller_id: mt
+      register_type: holding
+      address: 42020
+      value_type: U_WORD
+      unit_of_measurement: "W"
+      min_value: 0
+      max_value: 2500
+      step: 1
+      skip_updates: 2 # 10 seconds
+      web_server:
+        sorting_group_id: Control
+        sorting_weight: 5
 
-  - name: "Forcible Charge Power"
-    id: forcible_charge_power
-    icon: mdi:tune-variant
-    mode: box
-    platform: modbus_controller
-    modbus_controller_id: mt
-    register_type: holding
-    address: 42020
-    value_type: U_WORD
-    unit_of_measurement: "W"
-    min_value: 0
-    max_value: 2500
-    step: 1
-    skip_updates: 2 # 10 seconds
-    web_server:
-      sorting_group_id: Control
-      sorting_weight: 5
-
-  - name: "Forcible Discharge Power"
+  - <<: *modbus_power
+    name: "Forcible Discharge Power"
     id: forcible_discharge_power
-    icon: mdi:tune-variant
-    mode: box
-    platform: modbus_controller
-    modbus_controller_id: mt
-    register_type: holding
     address: 42021
-    value_type: U_WORD
-    unit_of_measurement: "W"
-    min_value: 0
-    max_value: 2500
-    step: 1
-    skip_updates: 2 # 10 seconds
     web_server:
-      sorting_group_id: Control
       sorting_weight: 6
 
 #  - name: "Charging Cutoff Capacity" # not working on V3 / V139 ?
@@ -1313,40 +1303,18 @@ number:
 #     sorting_group_id: Control
 #      sorting_weight: 11
 
-  - name: "Max. Charge Power"
+  - <<: *modbus_power
+    name: "Max. Charge Power"
     id: max_charge_power
-    icon: mdi:tune-variant
-    mode: box
-    platform: modbus_controller
-    modbus_controller_id: mt
-    register_type: holding
     address: 44002
-    value_type: U_WORD
-    unit_of_measurement: "W"
-    min_value: 0
-    max_value: 2500
-    step: 1
-    skip_updates: 2 # 10 seconds
     web_server:
-      sorting_group_id: Control
       sorting_weight: 7
 
-  - name: "Max. Discharge Power"
+  - <<: *modbus_power
+    name: "Max. Discharge Power"
     id: max_discharge_power
-    icon: mdi:tune-variant
-    mode: box
-    platform: modbus_controller
-    modbus_controller_id: mt
-    register_type: holding
     address: 44003
-    value_type: U_WORD
-    unit_of_measurement: "W"
-    min_value: 0
-    max_value: 2500
-    step: 1
-    skip_updates: 2 # 10 seconds
     web_server:
-      sorting_group_id: Control
       sorting_weight: 8
 
 ###############################################################################
