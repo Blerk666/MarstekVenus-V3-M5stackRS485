@@ -121,16 +121,16 @@ text_sensor:
         sorting_weight: 10
         
   - <<: *common_template_version
-      name: "EMS Version"
-      id: ems_version_text
-      web_server:
-        sorting_weight: 11
+    name: "EMS Version"
+    id: ems_version_text
+    web_server:
+      sorting_weight: 11
 
   - <<: *common_template_version
-      name: "BMS Version"
-      id: bms_version_text
-      web_server:
-        sorting_weight: 12
+    name: "BMS Version"
+    id: bms_version_text
+    web_server:
+      sorting_weight: 12
 
   - name: "Inverter State"
     id: inverter_state_text
@@ -745,117 +745,109 @@ sensor:
         sorting_weight: 27
         
   - <<: *common_modbus_cell-voltage
-      name: "Cell 2 Voltage"  #V3 only
-      id: cell_2_voltage
-      address: 34019
-      web_server:
-        sorting_weight: 28
+    name: "Cell 2 Voltage"  #V3 only
+    id: cell_2_voltage
+    address: 34019
+    web_server:
+      sorting_weight: 28
 
   - <<: *common_modbus_cell-voltage
-      name: "Cell 3 Voltage"  #V3 only
-      id: cell_3_voltage
-      address: 34020
-      web_server:
-        sorting_weight: 29
+    name: "Cell 3 Voltage"  #V3 only
+    id: cell_3_voltage
+    address: 34020
+    web_server:
+      sorting_weight: 29
 
   - <<: *common_modbus_cell-voltage
-      name: "Cell 4 Voltage"  #V3 only
-      id: cell_4_voltage
-      address: 34021
-      web_server:
-        sorting_weight: 30
+    name: "Cell 4 Voltage"  #V3 only
+    id: cell_4_voltage
+    address: 34021
+    web_server:
+      sorting_weight: 30
         
   - <<: *common_modbus_cell-voltage
-      name: "Cell 5 Voltage"  #V3 only
-      id: cell_5_voltage
-      address: 34022
-      web_server:
-        sorting_weight: 31
+    name: "Cell 5 Voltage"  #V3 only
+    id: cell_5_voltage
+    address: 34022
+    web_server:
+      sorting_weight: 31
 
   - <<: *common_modbus_cell-voltage
-      name: "Cell 6 Voltage"  #V3 only
-      id: cell_6_voltage
-      address: 34023
-      web_server:
-        sorting_weight: 32
+    name: "Cell 6 Voltage"  #V3 only
+    id: cell_6_voltage
+    address: 34023
+    web_server:
+      sorting_weight: 32
 
   - <<: *common_modbus_cell-voltage
-      name: "Cell 7 Voltage"  #V3 only
-      id: cell_7_voltage
-      address: 34024
-      web_server:
-        sorting_weight: 33
+    name: "Cell 7 Voltage"  #V3 only
+    id: cell_7_voltage
+    address: 34024
+    web_server:
+      sorting_weight: 33
 
   - <<: *common_modbus_cell-voltage
-      name: "Cell 8 Voltage"  #V3 only
-      id: cell_8_voltage
-      address: 34025
-      web_server:
-        sorting_weight: 34
+    name: "Cell 8 Voltage"  #V3 only
+    id: cell_8_voltage
+    address: 34025
+    web_server:
+      sorting_weight: 34
         
   - <<: *common_modbus_cell-voltage
-      name: "Cell 9 Voltage"  #V3 only
-      id: cell_8_voltage
-      address: 34026
-      web_server:
-        sorting_weight: 35
+    name: "Cell 9 Voltage"  #V3 only
+    id: cell_9_voltage
+    address: 34026
+    web_server:
+      sorting_weight: 35
 
   - <<: *common_modbus_cell-voltage
-      name: "Cell 10 Voltage"  #V3 only
-      id: cell_10_voltage
-      address: 34027
-      web_server:
-        sorting_weight: 36
+    name: "Cell 10 Voltage"  #V3 only
+    id: cell_10_voltage
+    address: 34027
+    web_server:
+      sorting_weight: 36
 
   - <<: *common_modbus_cell-voltage
-      name: "Cell 11 Voltage"  #V3 only
-      id: cell_11_voltage
-      address: 34028
-      web_server:
-        sorting_weight: 37
+    name: "Cell 11 Voltage"  #V3 only
+    id: cell_11_voltage
+    address: 34028
+    web_server:
+      sorting_weight: 37
 
   - <<: *common_modbus_cell-voltage
-      name: "Cell 12 Voltage"  #V3 only
-      id: cell_12_voltage
-      address: 34029
-      web_server:
-        sorting_weight: 38
+    name: "Cell 12 Voltage"  #V3 only
+    id: cell_12_voltage
+    address: 34029
+    web_server:
+      sorting_weight: 38
 
   - <<: *common_modbus_cell-voltage
-      name: "Cell 13 Voltage"  #V3 only
-      id: cell_13_voltage
-      address: 34030
-      web_server:
-        sorting_weight: 39
+    name: "Cell 13 Voltage"  #V3 only
+    id: cell_13_voltage
+    address: 34030
+    web_server:
+      sorting_weight: 39
 
   - <<: *common_modbus_cell-voltage
-      name: "Cell 14 Voltage"  #V3 only
-      id: cell_14_voltage
-      address: 34031
-      web_server:
-        sorting_weight: 40
+    name: "Cell 14 Voltage"  #V3 only
+    id: cell_14_voltage
+    address: 34031
+    web_server:
+      sorting_weight: 40
 
   - <<: *common_modbus_cell-voltage
-      name: "Cell 15 Voltage"  #V3 only
-      id: cell_15_voltage
-      address: 34032
-      web_server:
-        sorting_weight: 41
+    name: "Cell 15 Voltage"  #V3 only
+    id: cell_15_voltage
+    address: 34032
+    web_server:
+      sorting_weight: 41
 
   - <<: *common_modbus_cell-voltage
-      name: "Cell 16 Voltage"  #V3 only
-      id: cell_16_voltage
-      address: 34033
-      web_server:
-        sorting_weight: 42
-
-  - <<: *common_modbus_cell-voltage
-      name: "Cell 16 Voltage"  #V3 only
-      id: cell_16_voltage
-      address: 34033
-      web_server:
-        sorting_weight: 42
-
+    name: "Cell 16 Voltage"  #V3 only
+    id: cell_16_voltage
+    address: 34033
+    web_server:
+      sorting_weight: 42
 
   - name: "Lifetime Charging Energy"
     id: lifetime_charging_energy
