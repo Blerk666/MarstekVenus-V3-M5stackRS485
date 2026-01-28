@@ -913,7 +913,7 @@ sensor:
     web_server:
       sorting_weight: 12
 
-  - $modbus_temperature
+  - &modbus_temperature
       name: "Internal Temperature"
       id: internal_mt_temperature
       icon: mdi:thermometer
