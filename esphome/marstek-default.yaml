@@ -106,5 +106,5 @@ web_server:
 #     username: !secret web_server_username
 #     password: !secret web_server_password
 
-package:
+packages:
   marstek: github://blerk666/MarstekVenus-V3-M5stackRS485/esphome/marstek-venus-e-gen3.yaml@main
