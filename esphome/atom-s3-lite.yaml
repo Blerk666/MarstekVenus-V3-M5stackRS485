@@ -151,6 +151,23 @@ sensor:
       sorting_group_id: ESP
       sorting_weight: 14
 
+  - platform: uptime   # Internal use
+    id: deviceuptime
+
+  - platform: template  # uptime sensor. Only readable in Home Assisant
+    id: device_uptime_timestamp
+    name: "Online"
+    device_class: "timestamp"
+    accuracy_decimals: 0
+    update_interval: never
+    icon: 'mdi:clock-start'
+    entity_category: diagnostic
+    lambda: |-
+      static float timestamp = (
+        id(homeassistant_time).utcnow().timestamp - id(deviceuptime).state
+      );
+      return timestamp;
+
 ###############################################################################
 ## STATUS LED
 ###############################################################################
