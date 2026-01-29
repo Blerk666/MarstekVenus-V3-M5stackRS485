@@ -107,4 +107,7 @@ web_server:
 #     password: !secret web_server_password
 
 packages:
+  atom: github://blerk666/MarstekVenus-V3-M5stackRS485/esphome/atom-s3-lite.yaml@main
+  modbus: github://blerk666/MarstekVenus-V3-M5stackRS485/esphome/modbus-communication.yaml@main
   marstek: github://blerk666/MarstekVenus-V3-M5stackRS485/esphome/marstek-venus-e-gen3.yaml@main
+
