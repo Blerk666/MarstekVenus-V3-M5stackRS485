@@ -102,7 +102,7 @@ web_server:
       name: "Diagnostic"
       sorting_weight: -10
     - id: ESP
-      name: "ESP infomation"
+      name: "ESP info"
 
 # Uncommand to secure the webserver.
 #  auth:
