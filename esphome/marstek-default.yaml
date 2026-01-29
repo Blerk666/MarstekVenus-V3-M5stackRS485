@@ -101,6 +101,9 @@ web_server:
     - id: Diagnostic
       name: "Diagnostic"
       sorting_weight: -10
+    - id: ESP
+      name: "ESP infomation"
+
 # Uncommand to secure the webserver.
 #  auth:
 #     username: !secret web_server_username
