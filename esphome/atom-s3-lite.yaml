@@ -49,30 +49,36 @@ text_sensor:
       name: ESP IP Address
       icon: mdi:ip
       disabled_by_default: True
-      
+      web_server:
+        sorting_group_id: ESP
+
     ssid:
       name: ESP SSID
       icon: mdi:wifi
       disabled_by_default: True
-    
+      web_server:
+        sorting_group_id: ESP
+
     dns_address:
       name: ESP DNS
       icon: mdi:help-network-outline
       disabled_by_default: True
+      web_server:
+        sorting_group_id: ESP
 
     bssid:
       name: ESP Connected BSSID
       icon: mdi:expansion-card
       disabled_by_default: True
+      web_server:
+        sorting_group_id: ESP
 
     mac_address:
       name: ESP Mac Address
       icon: mdi:expansion-card-variant
       disabled_by_default: True
-
-    web_server:
-      sorting_group_id: ESP
-      sorting_weight: 3
+      web_server:
+        sorting_group_id: ESP
 
   - platform: version
     name: ESP Version
