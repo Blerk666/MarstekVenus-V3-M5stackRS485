@@ -23,6 +23,10 @@ switch:
       - globals.set:
           id: led_disabled
           value: 'false'
+    web_server:
+      sorting_group_id: ESP
+      sorting_weight: 20
+
 # Uart logging on/off switch
   - platform: template
     name: UART Logging
@@ -42,17 +46,33 @@ switch:
 text_sensor:
   - platform: wifi_info
     ip_address:
-      name: ESP IP
+      name: ESP IP Address
       icon: mdi:ip
-      web_server:
-        sorting_group_id: Diagnostic
-        sorting_weight: 4
+      disabled_by_default: True
+      
     ssid:
       name: ESP SSID
       icon: mdi:wifi
-      web_server:
-        sorting_group_id: ESP
-        sorting_weight: 3
+      disabled_by_default: True
+    
+    dns_address:
+      name: ESP DNS
+      icon: mdi:help-network-outline
+      disabled_by_default: True
+
+    bssid:
+      name: ESP Connected BSSID
+      icon: mdi:expansion-card
+      disabled_by_default: True
+
+    mac_address:
+      name: ESP Mac Address
+      icon: mdi:expansion-card-variant
+      disabled_by_default: True
+
+    web_server:
+      sorting_group_id: ESP
+      sorting_weight: 3
 
   - platform: version
     name: ESP Version
