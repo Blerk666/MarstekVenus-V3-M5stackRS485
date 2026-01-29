@@ -6,8 +6,8 @@ globals:
 
 switch:
   - platform: template
-    name: "light Disabled"
-    id: light_disabled
+    name: "Disable Light"
+    id: disable_light
     icon: mdi:toggle-switch
     disabled_by_default: True
     entity_category: diagnostic
