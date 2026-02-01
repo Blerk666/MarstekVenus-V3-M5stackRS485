@@ -1,3 +1,13 @@
+time:
+  - platform: homeassistant
+    id: homeassistant_time
+    timezone: Europe/Amsterdam  # Change this to your timezone. See https://github.com/nayarsystems/posix_tz_db/blob/master/zones.csv for the correct timezone name.
+    on_time_sync:
+      - component.update: device_uptime_timestamp  
+
+captive_portal:
+  id: id_captive_portal
+  
 web_server:
   sorting_groups:
     - id: Info

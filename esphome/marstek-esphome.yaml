@@ -2,7 +2,7 @@
 # for security see https://esphome.io/guides/security_best_practices/
 
 substitutions:
-  name: marstek-m2     ## change name to marstek_m2 or marstek_m3 for more batterys
+  name: marstek-m1     ## change name to marstek_m2 or marstek_m3 for more batterys
 
 ## Enable/Disable logging
 logger:
