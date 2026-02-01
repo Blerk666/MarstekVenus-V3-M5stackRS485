@@ -1,22 +1,8 @@
 
-## Version 1.11 - M5stack Marstek V3  (see rule numer 20)
-#
-# not working:
-# sensor:
-#   ac_offgrid_power
-#   software_version
-#   firmware_version
-#   ac_current
-#   ac_offgrid_current
-# number:
-#   charging_cutoff_capacity
-#   discharging_cutoff_capacity
-
 # for security see https://esphome.io/guides/security_best_practices/
 
 substitutions:
-  name: marstek-m1     ## change name to marstek_m2 or marstek_m3 for more batterys
-  friendly_name: MT1   ## change name to MT2 or MT3 for more batterys
+  name: marstek-m2     ## change name to marstek_m2 or marstek_m3 for more batterys
 
 ## Enable/Disable logging
 logger:
@@ -53,13 +39,10 @@ wifi:
 
 ## Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
-    ssid: "${friendly_name} Hotspot"
+    ssid: "${name} Hotspot"
     password: "configesp"
     ap_timeout: 15s
 
-captive_portal:
-  id: id_captive_portal
-  
 web_server:
   port: 80
   version: 3

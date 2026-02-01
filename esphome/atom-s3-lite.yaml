@@ -1,3 +1,12 @@
+# Version 1.0
+# - Improved internal LED behavior
+#   - LED disable state is now persistent across reboots
+#   - LED is now event-driven for faster response times
+#
+# Improvements todo:
+# - Improved brightness control using the M5Stack button
+# - Clear distinction between normal operation brightness and alert brightness
+
 esphome:
   name: ${name}
   # friendly_name: ${friendly_name}  ### temporarely uncommented because of sensor naming wrong for nodered flow gitcode bob
@@ -66,6 +75,10 @@ switch:
     turn_off_action:
       - logger.set_level: ERROR
     entity_category: diagnostic
+    on_turn_on:
+      - script.execute: update_status_led
+    on_turn_off:
+      - script.execute: update_status_led
     web_server:
       sorting_group_id: ESP
       sorting_weight: 20
@@ -144,26 +157,28 @@ binary_sensor:
     id: brightness_button
     internal: true
     icon: mdi:brightness-6
-    on_multi_click:
-      - timing:
-          - ON for at least 1s
-        then:
-          - logger.log: "Lange druk gedetecteerd - start helderheid aanpassen"
-          - script.execute: adjust_brightness_loop
 
-      - timing:
-          - ON for at most 700ms
-          - OFF for at least 50ms
-        then:
-          - logger.log: "Korte druk - toggle LED"
-          - switch.toggle: disable_light  
-    on_release:
+
+    on_click: 
       then:
-        - script.stop: adjust_brightness_loop
-    web_server:
-      sorting_group_id: ESP
-      sorting_weight: 15
+        - logger.log: "Korte druk - toggle LED"
+        - switch.toggle: disable_light
+                
+    on_press:
+      - while:
+          condition:
+            binary_sensor.is_on: brightness_button
 
+          then:
+            - light.dim_relative:
+                id: status_led
+                relative_brightness: 5%
+                transition_length: 0.1s
+                brightness_limits:
+                    min_brightness: 25%
+                    max_brightness: 100%
+            - delay: 0.1s
+  
 ## Sensoren
 sensor:
   - name: "Atom temperature"
@@ -224,7 +239,7 @@ light:
           transition_length: 100ms
           update_interval: 100ms
           min_brightness: 25%
-          max_brightness: 100%
+          max_brightness: 75%
     web_server:
       sorting_group_id: ESP
       sorting_weight: 13
@@ -237,6 +252,7 @@ interval:
 # 🟢 Green on => wifi connected- api connected/ Green blinking => wifi connected - api disconnected
 # 🔴 Red => wifi disconnected
 # 🔵 Blue => AP mode
+# 🟣 Purple fast pulse => UART logging on. 
 
 script:
   - id: update_status_led
@@ -280,30 +296,26 @@ script:
                 else:
                   if:
                     condition:
-                      switch.is_on: disable_light
+                      switch.is_on: uart_debug_switch
                     then:
-                      - light.turn_off: status_led
-                    else:
                       - light.turn_on:
                           id: status_led
-                          red: 0
-                          green: 100%
-                          blue: 0
-                          effect: None
+                          brightness: 100%
+                          red: 100%
+                          green: 0
+                          blue: 100%
+                          effect: fast_pulse
+                    else: 
+                      if:
+                        condition:
+                          switch.is_on: disable_light
+                        then:
+                          - light.turn_off: status_led
+                        else:
+                          - light.turn_on:
+                              id: status_led
+                              red: 0
+                              green: 100%
+                              blue: 0
+                              effect: None
 
-    ## knop op de atom ingedrukt houden = veranderen brightness
-
-  - id: adjust_brightness_loop
-    mode: restart
-    then:
-      - repeat:
-          count: 1000
-          then:
-            - lambda: |-
-                static float brightness = 0.0;
-                brightness += 0.1;
-                if (brightness > 1.0) brightness = 0.0;
-                auto call = id(status_led).make_call();
-                call.set_brightness(brightness);
-                call.perform();
-            - delay: 750ms
