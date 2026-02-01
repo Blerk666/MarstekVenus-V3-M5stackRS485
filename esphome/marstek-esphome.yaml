@@ -66,18 +66,10 @@ web_server:
   include_internal: False
   local: True
 
-# Uncommand to secure the webserver.
-#  auth:
-#     username: !secret web_server_username
-#     password: !secret web_server_password
-
-
-time:
-  - platform: homeassistant
-    id: homeassistant_time
-    timezone: Europe/Amsterdam  # Change this to your timezone. See https://github.com/nayarsystems/posix_tz_db/blob/master/zones.csv for the correct timezone name.
-    on_time_sync:
-      - component.update: device_uptime_timestamp  
+# Webserver security.
+  auth:
+     username: !secret web_server_username
+     password: !secret web_server_password
 
 packages:
   remote_package_files:

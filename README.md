@@ -34,6 +34,30 @@ Each time you install or compile the configuration, the required include files a
 
 ---
 
+#### Manage all local.
+
+If you want, you can place all the files local. Be aware updates needs to done manual. 
+
+Create a `components` folder in the `esphone` folder. Add the below named files to this directory
+
+```
+atom-s3-lite.yaml
+modbus-communication.yaml
+marstek-venus-e-gen3.yaml
+general-settings.yaml
+```
+
+In the file `marstek-esphome.yaml` remove the **`packages:`** part and replace it with the part below. 
+
+```
+packages:
+  atom: !include components/atom-s3-lite.yaml
+  modbus: !include components/modbus-communication.yaml
+  merstek: !include components/marstek-venus-e-gen3.yaml
+  general: !include components/general-settings.yaml
+``` 
+---
+
 ![image](https://github.com/Blerk666/MarstekVenus-V3-M5stackRS485/blob/main/images/m5stack-RS485-UTP.jpg)
 
 
