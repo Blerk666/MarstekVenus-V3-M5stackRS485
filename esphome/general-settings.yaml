@@ -1,0 +1,17 @@
+web_server:
+  sorting_groups:
+    - id: Info
+      name: "Info"
+      sorting_weight: -40
+    - id: Control
+      name: "Control"
+      sorting_weight: -30
+    - id: Status
+      name: "Status"
+      sorting_weight: -20
+    - id: Diagnostic
+      name: "Diagnostic"
+      sorting_weight: -10
+    - id: ESP
+      name: "ESP info"
+

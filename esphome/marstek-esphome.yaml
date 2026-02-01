@@ -1,0 +1,96 @@
+
+## Version 1.11 - M5stack Marstek V3  (see rule numer 20)
+#
+# not working:
+# sensor:
+#   ac_offgrid_power
+#   software_version
+#   firmware_version
+#   ac_current
+#   ac_offgrid_current
+# number:
+#   charging_cutoff_capacity
+#   discharging_cutoff_capacity
+
+# for security see https://esphome.io/guides/security_best_practices/
+
+substitutions:
+  name: marstek-m2    ## change name to marstek_m2 or marstek_m3 for more batterys
+  friendly_name: MT2  ## change name to MT2 or MT3 for more batterys
+
+
+
+## Enable/Disable logging
+logger:
+  logs:
+    component: ERROR
+  
+## Enable Home Assistant API
+api:
+  reboot_timeout: 0s
+#  encryption:
+#    key: !secret api_key
+
+## Enable OTA updates
+ota:
+  - platform: esphome
+  #  password: !secret ota_password
+  - platform: web_server
+
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+  min_auth_mode: WPA2  
+  reboot_timeout: 0s
+  fast_connect: true
+  power_save_mode: high
+  use_psram: true
+
+## uncomment if you need a fixed ip address
+#  manual_ip:
+#    static_ip: 192.168.178.126
+#    gateway: 192.168.178.1
+#    subnet: 255.255.255.0
+
+## Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "${friendly_name} Hotspot"
+    password: "configesp"
+    ap_timeout: 15s
+
+captive_portal:
+  id: id_captive_portal
+  
+web_server:
+  port: 80
+  version: 3
+  include_internal: False
+  local: True
+
+# Uncommand to secure the webserver.
+#  auth:
+#     username: !secret web_server_username
+#     password: !secret web_server_password
+
+
+time:
+  - platform: homeassistant
+    id: homeassistant_time
+    timezone: Europe/Amsterdam  # Change this to your timezone. See https://github.com/nayarsystems/posix_tz_db/blob/master/zones.csv for the correct timezone name.
+    on_time_sync:
+      - component.update: device_uptime_timestamp  
+
+packages:
+  atom: !include components/atom-s3-lite.yaml
+  modbus: !include components/modbus-communication.yaml
+  merstek: !include components/marstek-venus-e-gen3.yaml
+  general: !include components/general-settings.yaml
+
+#packages:
+#  remote_package_files:
+#    url: https://github.com/Blerk666/MarstekVenus-V3-M5stackRS485
+#    path: esphome
+#    files: [atom-s3-lite.yaml, modbus-communication.yaml, marstek-venus-e-gen3.yaml]
+#    ref: main
+#    refresh: 5min

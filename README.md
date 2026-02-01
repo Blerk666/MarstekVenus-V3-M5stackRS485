@@ -7,7 +7,7 @@ Modbus reading and control of a Marstek Venus plugin battery using an M5Stack RS
 
 
 
-![image](https://github.com/Blerk666/MarstekVenus-V3-M5stackRS485/blob/main/images/m5stack_RS485_base_Atom_S3_lite.jpg)
+![image](https://github.com/Blerk666/MarstekVenus-V3-M5stackRS485/blob/main/images/m5stack-RS485-UTP.jpg)
 
 
 #### Modification explanation:
