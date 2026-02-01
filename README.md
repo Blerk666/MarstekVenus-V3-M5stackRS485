@@ -5,13 +5,31 @@ Modbus reading and control of a Marstek Venus plugin battery using an M5Stack RS
 > Credits to Fonske for the original project this repository is based on. 
 > [Fonske repository](https://github.com/fonske/MarstekVenus-M5stackRS485#)
 
-The configuration yaml is created in parts. Add the file general-esphome.yaml to your ESPHome, all the other files will be inculde by compiling. Every time you run the installation, all include files will be download from github.  
- * general-esphome.yaml : Add this in your ESPHOME, and change the secrets
- * general-setting.yaml : default settings.
- * atom-s3-lite.yaml: Configuration for the Atom with all sensors.
- * modbus-communcation.yaml: Modbus configuration.
- * marstek-venus-e-gen3.yaml: All sensors for the Marstek Venus E gen3
+## Configuration structure
 
+The ESPHome configuration is split into multiple YAML files.
+
+Only > [general-esphome.yaml] needs to be added to your ESPHome project.
+All other YAML files are automatically included during compilation.
+
+Each time you install or compile the configuration, the required include files are downloaded directly from GitHub.
+
+File overview
+
+general-esphome.yaml
+Main entry file. Add this file to your ESPHome project and update the required secrets.
+
+general-setting.yaml
+Contains the default settings.
+
+atom-s3-lite.yaml
+Configuration for the Atom S3 Lite, including all sensors.
+
+modbus-communication.yaml
+Modbus communication configuration.
+
+marstek-venus-e-gen3.yaml
+Sensor definitions for the Marstek Venus E Gen3.
 
 ![image](https://github.com/Blerk666/MarstekVenus-V3-M5stackRS485/blob/main/images/m5stack-RS485-UTP.jpg)
 
