@@ -18,8 +18,6 @@ substitutions:
   name: marstek-m2    ## change name to marstek_m2 or marstek_m3 for more batterys
   friendly_name: MT2  ## change name to MT2 or MT3 for more batterys
 
-
-
 ## Enable/Disable logging
 logger:
   logs:
@@ -82,15 +80,9 @@ time:
       - component.update: device_uptime_timestamp  
 
 packages:
-  atom: !include components/atom-s3-lite.yaml
-  modbus: !include components/modbus-communication.yaml
-  merstek: !include components/marstek-venus-e-gen3.yaml
-  general: !include components/general-settings.yaml
-
-#packages:
-#  remote_package_files:
-#    url: https://github.com/Blerk666/MarstekVenus-V3-M5stackRS485
-#    path: esphome
-#    files: [atom-s3-lite.yaml, modbus-communication.yaml, marstek-venus-e-gen3.yaml]
-#    ref: main
-#    refresh: 5min
+  remote_package_files:
+    url: https://github.com/Blerk666/MarstekVenus-V3-M5stackRS485
+    path: esphome
+    files: [atom-s3-lite.yaml, modbus-communication.yaml, marstek-venus-e-gen3.yaml]
+    ref: main
+    refresh: 5min
