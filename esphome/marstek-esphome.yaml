@@ -22,9 +22,9 @@
 #
 # - marstek-m1_api_key    # Generate a new API key:
 #                         # https://esphome.io/components/api/
+# - marstek-m1_ota_password
 # - marstek-m1_web_server_username
 # - marstek-m1_web_server_password
-# - marstek-m1_ota_password
 # - wifi_ssid
 # - wifi_password
 #
@@ -97,11 +97,10 @@ web_server:
 packages:
   remote_package_files:
     url: https://github.com/Blerk666/MarstekVenus-V3-M5stackRS485
-    path: esphome
     files: 
-      - general-settings.yaml
-      - atom-s3-lite.yaml
-      - modbus-communication.yaml
-      - marstek-venus-e-gen3.yaml
+      - esphome/components/general-settings.yaml
+      - esphome/components/atom-s3-lite.yaml
+      - esphome/components/modbus-communication.yaml
+      - esphome/components/marstek-venus-e-gen3.yaml
     ref: main
     refresh: 5min
