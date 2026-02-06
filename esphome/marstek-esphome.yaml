@@ -29,6 +29,7 @@
 # - wifi_password
 #
 # Security:
+
 # For ESPHome security best practices, see:
 # https://esphome.io/guides/security_best_practices/
 #
@@ -47,7 +48,7 @@ logger:
   
 # Enable Home Assistant API
 api:
-  reboot_timeout: 0s
+  reboot_timeout: 30s
   encryption:
     key: !secret marstek-m1_api_key
 
