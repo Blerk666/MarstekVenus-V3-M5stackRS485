@@ -350,7 +350,8 @@ sensor:
 
   - name: "Battery State Of Charge"
     id: battery_state_of_charge
-    icon: mdi:power-plug-battery-outline
+    #icon: mdi:power-plug-battery-outline   # When no icon is defined, the battery device class icon is used.
+                                            # The icon changes automatically based on the battery level.
     platform: modbus_controller
     modbus_controller_id: mt
     register_type: holding
