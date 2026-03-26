@@ -993,6 +993,7 @@ number:
     id: forcible_discharge_power
     address: 42021
     web_server:
+      sorting_group_id: Control
       sorting_weight: 6
 
 #  - name: "Charging Cutoff Capacity" # not working on V3 / V139 ?
@@ -1036,6 +1037,7 @@ number:
     id: max_charge_power
     address: 44002
     web_server:
+      sorting_group_id: Control
       sorting_weight: 7
 
   - <<: *modbus_power
@@ -1043,5 +1045,6 @@ number:
     id: max_discharge_power
     address: 44003
     web_server:
+      sorting_group_id: Control
       sorting_weight: 8
 
