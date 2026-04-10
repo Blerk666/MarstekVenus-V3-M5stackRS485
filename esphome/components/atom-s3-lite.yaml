@@ -50,7 +50,7 @@ api:
 
 switch:
   - platform: template
-    name: "Disable Light"
+    name: "ESP Disable Light"
     id: disable_light
     icon: mdi:toggle-switch
     entity_category: diagnostic
