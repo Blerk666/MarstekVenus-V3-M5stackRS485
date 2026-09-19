@@ -15,7 +15,6 @@ text_sensor:
     modbus_controller_id: mt_long
     register_type: holding
     address: 31000
-    value_type: RAW
     register_count: 10
     response_size: 20
     entity_category: diagnostic
