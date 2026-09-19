@@ -12,12 +12,11 @@ text_sensor:
     id: device_name
     icon: mdi:rename-outline
     platform: modbus_controller
-    modbus_controller_id: mt
+    modbus_controller_id: mt-long
     register_type: holding
     address: 31000
     register_count: 10
     response_size: 20
-    skip_updates: 60 # 5 minutes
     entity_category: diagnostic
     web_server:
       sorting_group_id: Diagnostic
@@ -90,12 +89,11 @@ text_sensor:
     id: wifi_status
     icon: mdi:wifi-alert
     platform: modbus_controller
-    modbus_controller_id: mt
+    modbus_controller_id: mt-long
     register_type: holding
     address: 30300
     raw_encode: NONE
     entity_category: diagnostic
-    skip_updates: 20
     lambda: |-
       uint16_t int_mode = (data[item->offset] << 8) + data[item->offset+1];
       ESP_LOGD("main","Parsed operation mode int : %d", int_mode);
@@ -113,12 +111,11 @@ text_sensor:
     id: bt_status
     icon: mdi:home-heart
     platform: modbus_controller
-    modbus_controller_id: mt
+    modbus_controller_id: mt-long
     register_type: holding
     address: 30301
     raw_encode: NONE
     entity_category: diagnostic
-    skip_updates: 20
     lambda: |-
       uint16_t int_mode = (data[item->offset] << 8) + data[item->offset+1];
       ESP_LOGD("main","Parsed operation mode int : %d", int_mode);
@@ -139,12 +136,11 @@ text_sensor:
     id: cloud_status
     icon: mdi:home-heart
     platform: modbus_controller
-    modbus_controller_id: mt
+    modbus_controller_id: mt-long
     register_type: holding
     address: 30302
     raw_encode: NONE
     entity_category: diagnostic
-    skip_updates: 20
     lambda: |-
       uint16_t int_mode = (data[item->offset] << 8) + data[item->offset+1];
       ESP_LOGD("main","Parsed operation mode int : %d", int_mode);
@@ -263,12 +259,11 @@ sensor:
   - id: ems_version # No name, since it's internal
     icon: mdi:factory
     platform: modbus_controller
-    modbus_controller_id: mt
+    modbus_controller_id: mt-long
     register_type: holding
     address: 30200
     value_type: U_WORD
     accuracy_decimals: 0
-    skip_updates: 60 # 5 minutes
     internal: true
     on_value:
       then:
@@ -281,12 +276,11 @@ sensor:
   - id: vns_version # No name, since it's internal
     icon: mdi:factory
     platform: modbus_controller
-    modbus_controller_id: mt
+    modbus_controller_id: mt-long
     register_type: holding
     address: 30202
     value_type: U_WORD
     accuracy_decimals: 0
-    skip_updates: 60 # 5 minutes
     internal: true
     on_value:
       then:
@@ -299,12 +293,11 @@ sensor:
   - id: bms_version # No name, since it's internal
     icon: mdi:factory
     platform: modbus_controller
-    modbus_controller_id: mt
+    modbus_controller_id: mt-long
     register_type: holding
     address: 30204 #31102
     value_type: U_WORD
     accuracy_decimals: 0
-    skip_updates: 60 # 5 minutes
     internal: true
     on_value:
       then:
@@ -318,7 +311,7 @@ sensor:
     id: battery_voltage
     icon: mdi:sine-wave
     platform: modbus_controller
-    modbus_controller_id: mt
+    modbus_controller_id: mt-long
     register_type: holding
     address: 30100 #32100 in V12
     value_type: U_WORD
@@ -328,7 +321,6 @@ sensor:
     state_class: measurement
     filters:
       - multiply: 0.01
-    skip_updates: 60 # 5 minutes
     web_server:
       sorting_group_id: Info
       sorting_weight: 16
@@ -337,7 +329,7 @@ sensor:
     icon: mdi:current-dc
     id: battery_current
     platform: modbus_controller
-    modbus_controller_id: mt
+    modbus_controller_id: mt-long
     register_type: holding
     address: 30101 #32101 in V12
     value_type: S_WORD
@@ -347,7 +339,6 @@ sensor:
     state_class: measurement
     filters:
       - multiply: 0.1
-    skip_updates: 60 # 10 seconds
     web_server:
       sorting_group_id: Info
       sorting_weight: 15
@@ -364,7 +355,6 @@ sensor:
     device_class: power
     state_class: measurement
     accuracy_decimals: 0
-    skip_updates: 0
     web_server:
       sorting_group_id: Info
       sorting_weight: 14
@@ -393,7 +383,7 @@ sensor:
     id: battery_total_energy
     icon: mdi:battery-charging-100
     platform: modbus_controller
-    modbus_controller_id: mt
+    modbus_controller_id: mt-long
     register_type: holding
     address: 32105 
     value_type: U_WORD
@@ -401,7 +391,6 @@ sensor:
     accuracy_decimals: 2
     filters:
       - multiply: 0.001 
-    skip_updates: 60 # 5 minutes
     web_server:
       sorting_group_id: Info
       sorting_weight: 8
@@ -436,7 +425,6 @@ sensor:
     device_class: power
     state_class: measurement
     accuracy_decimals: 0
-    skip_updates: 1 # 10 seconds
     web_server:
       sorting_group_id: Info
       sorting_weight: 1
@@ -474,7 +462,6 @@ sensor:
     accuracy_decimals: 1
     filters:
       - multiply: 0.1
-    skip_updates: 2 # 10 seconds 
     web_server:
       sorting_group_id: Info
       sorting_weight: 3
@@ -493,7 +480,6 @@ sensor:
     accuracy_decimals: 1
     filters:
       - multiply: 0.1
-    skip_updates: 2 # 10 seconds 
     web_server:
       sorting_group_id: Info
       sorting_weight: 4
@@ -563,7 +549,6 @@ sensor:
       state_class: measurement
       filters:
         - multiply: 0.001
-      skip_updates: 10
       web_server:
         sorting_group_id: Info
         sorting_weight: 24
@@ -772,20 +757,31 @@ sensor:
       sorting_weight: 10
 
 # Slow Sensor
-  - <<: *modbus_energy
-    name: "Monthly Charging Energy"   
-    id: monthly_charging_energy
-    address: 33008
-    skip_updates: 60 # 5 minutes
-    web_server:
-      sorting_weight: 11
+  - &modbus_energy-slow
+       name: "Monthly Charging Energy"   
+      id: monthly_charging_energy
+      icon: mdi:chart-bar
+      platform: modbus_controller
+      modbus_controller_id: mt-long
+      register_type: holding
+      address: 33008
+      value_type: U_DWORD
+      unit_of_measurement: "kWh" 
+      device_class: energy
+      state_class: total_increasing
+      accuracy_decimals: 2
+      filters:
+        - multiply: 0.01
+      register_count: 2
+      web_server:
+        sorting_group_id: Info
+        sorting_weight: 11
 
 # Slow Sensor
-  - <<: *modbus_energy
+  - <<: *modbus_energy-slow
     name: "Monthly Discharging Energy"
     id: monthly_discharging_energy
     address: 33010
-    skip_updates: 60 # 5 minutes
     web_server:
       sorting_weight: 12
 
@@ -794,7 +790,7 @@ sensor:
       id: internal_mt_temperature
       icon: mdi:thermometer
       platform: modbus_controller
-      modbus_controller_id: mt
+      modbus_controller_id: mt-long
       register_type: holding
       address: 35000
       value_type: S_WORD
@@ -804,7 +800,6 @@ sensor:
       accuracy_decimals: 1
       filters:
         - multiply: 0.1
-      skip_updates: 60 # 5 minutes
       web_server:
         sorting_group_id: Info
         sorting_weight: 19
@@ -841,7 +836,7 @@ sensor:
     id: battery_charge_voltage_limit
     platform: modbus_controller
     icon: mdi:sine-wave
-    modbus_controller_id: mt
+    modbus_controller_id: mt-long
     register_type: holding
     address: 35110
     value_type: U_WORD
@@ -849,7 +844,6 @@ sensor:
     device_class: voltage
     state_class: measurement
     accuracy_decimals: 0
-    skip_updates: 60 # 5 minutes
     filters:
       - multiply: 0.01
     web_server:
@@ -861,7 +855,7 @@ sensor:
     id: battery_charge_current_limit
     icon: mdi:current-dc
     platform: modbus_controller
-    modbus_controller_id: mt
+    modbus_controller_id: mt-long
     register_type: holding
     address: 35111
     value_type: S_WORD
@@ -869,7 +863,6 @@ sensor:
     device_class: current
     state_class: measurement
     accuracy_decimals: 0
-    skip_updates: 60 # 5 minutes
     filters:
       - multiply: 0.01
     web_server:
@@ -881,7 +874,7 @@ sensor:
     id: battery_discharge_current_limit
     icon: mdi:current-dc
     platform: modbus_controller
-    modbus_controller_id: mt
+    modbus_controller_id: mt-long
     register_type: holding
     address: 35112
     value_type: S_WORD
@@ -889,7 +882,6 @@ sensor:
     device_class: current
     state_class: measurement
     accuracy_decimals: 0
-    skip_updates: 60 # 5 minutes
     filters:
       - multiply: 0.01
     web_server:
@@ -937,7 +929,6 @@ select:
     optionsmap:
       "enable": 21930
       "disable": 21947
-    skip_updates: 2 # 10 seconds
     web_server:
       sorting_group_id: Control
       sorting_weight: 1
@@ -953,7 +944,6 @@ select:
       "manual": 0
       "anti-feed": 1
       "ai": 2
-    skip_updates: 2 # 10 seconds
     web_server:
       sorting_group_id: Control
       sorting_weight: 2
@@ -968,7 +958,7 @@ select:
     optionsmap:
       "enable": 0
       "disable": 1
-    skip_updates: 2 # 10 seconds
+#    skip_updates: 2 # 10 seconds
     web_server:
       sorting_group_id: Control
       sorting_weight: 3 
@@ -1020,7 +1010,7 @@ number:
       min_value: 0
       max_value: 2500
       step: 1
-      skip_updates: 2 # 10 seconds
+#      skip_updates: 2 # 10 seconds
       web_server:
         sorting_group_id: Control
         sorting_weight: 5
