@@ -758,7 +758,7 @@ sensor:
 
 # Slow Sensor
   - &modbus_energy-slow
-       name: "Monthly Charging Energy"   
+      name: "Monthly Charging Energy"   
       id: monthly_charging_energy
       icon: mdi:chart-bar
       platform: modbus_controller
