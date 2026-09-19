@@ -15,6 +15,7 @@ text_sensor:
     modbus_controller_id: mt-long
     register_type: holding
     address: 31000
+    value_type: RAW
     register_count: 10
     response_size: 20
     entity_category: diagnostic
@@ -704,7 +705,6 @@ sensor:
       accuracy_decimals: 2
       filters:
         - multiply: 0.01
-      register_count: 2
       web_server:
         sorting_group_id: Info
         sorting_weight: 12
@@ -772,7 +772,6 @@ sensor:
       accuracy_decimals: 2
       filters:
         - multiply: 0.01
-      register_count: 2
       web_server:
         sorting_group_id: Info
         sorting_weight: 11
