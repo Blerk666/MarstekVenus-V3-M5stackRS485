@@ -26,3 +26,9 @@ modbus_controller:
     command_throttle: 20ms
     update_interval: 2s
 
+modbus_controller:
+  - id: mt-long
+    address: 0x1
+    modbus_id: modbus1
+    command_throttle: 20ms
+    update_interval: 300s
