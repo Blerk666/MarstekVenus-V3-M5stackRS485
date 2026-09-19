@@ -12,6 +12,7 @@ esphome:
   # friendly_name: ${friendly_name}  ### temporarely uncommented because of sensor naming wrong for nodered flow gitcode bob
   min_version: 2026.1.0     ## config updated to the latest ESPHome requerments.
   name_add_mac_suffix: false
+  merge_warnings: false
 
 esp32:
   board: esp32-s3-devkitc-1  ## M5stack Atom S3 lite  
