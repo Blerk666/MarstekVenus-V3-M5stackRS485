@@ -23,11 +23,9 @@ modbus_controller:
   - id: mt
     address: 0x1
     modbus_id: modbus1
-    turnaround_time: 20ms
     update_interval: 2s
 
   - id: mt_long
     address: 0x1
     modbus_id: modbus1
-    turnaround_time: 20ms
     update_interval: 300s
