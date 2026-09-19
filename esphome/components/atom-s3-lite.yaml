@@ -220,7 +220,7 @@ light:
     platform: esp32_rmt_led_strip
     disabled_by_default: True # Could be anabled in Home Assistant.
     #internal: true # Hides from Home Assistant
-    rgb_order: GRB
+    channel_colors: GRB
     pin: 35
     num_leds: 4
     chipset: ws2812
