@@ -15,7 +15,6 @@ text_sensor:
     modbus_controller_id: mt_long
     register_type: holding
     address: 31000
-   # register_count: 10
     response_size: 20
     entity_category: diagnostic
     web_server:
@@ -306,6 +305,22 @@ sensor:
             char buf[5];
             sprintf(buf, "V%d", version);
             id(bms_version_text).publish_state(buf);
+
+  - name: "COM Module version"
+    id: comm_module_version
+    icon: mdi:ticket-confirmation-outline
+    platform: modbus_controller
+    modbus_controller_id: mt_long
+    register_type: holding
+    address: 30350
+    value_type: U_WORD
+    register_count: 6
+    response_size: 12
+    entity_category: diagnostic
+    web_server:
+      sorting_group_id: Diagnostic
+      sorting_weight: 13  # adjust as needed
+      
 
   - name: "Battery Voltage"
     id: battery_voltage
