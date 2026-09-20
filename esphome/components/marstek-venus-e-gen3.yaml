@@ -92,7 +92,7 @@ text_sensor:
     register_type: holding
     address: 30350
     response_size: 12
-    raw_encode: None
+    raw_encode: NONE
     entity_category: diagnostic
     web_server:
       sorting_group_id: Diagnostic
