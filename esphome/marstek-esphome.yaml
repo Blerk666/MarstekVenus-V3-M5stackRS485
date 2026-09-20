@@ -1,5 +1,5 @@
 #--------------------------------------------------------------------------------
-# Version: 1.0                              Date: 04-Feb-2026
+# Version: 1.1                              Date: 20-Sep-2026
 #--------------------------------------------------------------------------------
 # General:
 # - This YAML file is intended to remain mostly unchanged.
@@ -14,6 +14,8 @@
 # Changes:
 # - v1.0
 #   - Initial release.
+# - v1.1
+#   - Updated for ESPHome 2026-09
 #
 # Installation:
 # Before installing, create the following entries in your secrets.yaml file.
@@ -66,7 +68,6 @@ wifi:
   reboot_timeout: 0s
   fast_connect: true
   power_save_mode: high
-  use_psram: true
 
 # Uncomment if you need a fixed ip address
 #  manual_ip:
@@ -91,7 +92,7 @@ web_server:
   auth:
      username: !secret marstek-m1_web_server_username
      password: !secret marstek-m1_web_server_password
-
+  ota: false
 
 # Remote package configuration
 # These files are automatically downloaded from GitHub during compilation
