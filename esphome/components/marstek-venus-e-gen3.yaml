@@ -314,7 +314,7 @@ sensor:
     register_type: holding
     address: 30350
     value_type: U_WORD
-    register_count: 6
+    #register_count: 6
     response_size: 12
     entity_category: diagnostic
     web_server:
