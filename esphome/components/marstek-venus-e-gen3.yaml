@@ -83,6 +83,20 @@ text_sensor:
     web_server:
       sorting_group_id: Info
       sorting_weight: 5
+      
+  - name: "COM Module version"
+    id: comm_module_version
+    icon: mdi:ticket-confirmation-outline
+    platform: modbus_controller
+    modbus_controller_id: mt_long
+    register_type: holding
+    address: 30350
+    response_size: 12
+    raw_encode: HEXBYTES
+    entity_category: diagnostic
+    web_server:
+      sorting_group_id: Diagnostic
+      sorting_weight: 13
 
   - name: "Wifi status"
     id: wifi_status
@@ -305,21 +319,6 @@ sensor:
             char buf[5];
             sprintf(buf, "V%d", version);
             id(bms_version_text).publish_state(buf);
-
-  - name: "COM Module version"
-    id: comm_module_version
-    icon: mdi:ticket-confirmation-outline
-    platform: modbus_controller
-    modbus_controller_id: mt_long
-    register_type: holding
-    address: 30350
-    response_size: 12
-    raw_encode: HEXBYTES
-    entity_category: diagnostic
-    web_server:
-      sorting_group_id: Diagnostic
-      sorting_weight: 13
-      
 
   - name: "Battery Voltage"
     id: battery_voltage
